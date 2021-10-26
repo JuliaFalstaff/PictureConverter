@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".mvp.view.MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_header"
         android:text="@string/textViewConverter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="@dimen/margin_bottom_header"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.button.MaterialButton
@@ -30,6 +30,7 @@
         android:id="@+id/imageViewToConvertPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/imageViewToConvert"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +41,7 @@
         android:id="@+id/imageViewOfConvertedPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/imageViewConverted"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,8 +53,8 @@
         android:id="@+id/textViewOfConvertedPicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/converted_picture"
         android:layout_marginTop="@dimen/margin_top_converted_picture"
+        android:text="@string/converted_picture"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
