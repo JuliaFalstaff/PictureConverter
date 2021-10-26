@@ -6,13 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/textViewConverter"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/margin_bottom_header"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonConverterPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonConverter"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewOfConvertedPicture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewToConvertPicture" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewToConvertPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/imageViewToConvert"
+        android:src="@drawable/ic_launcher_foreground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeader" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewOfConvertedPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/imageViewConverted"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewToConvertPicture" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewOfConvertedPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/converted_picture"
+        android:layout_marginTop="@dimen/margin_top_converted_picture"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewOfConvertedPicture" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
