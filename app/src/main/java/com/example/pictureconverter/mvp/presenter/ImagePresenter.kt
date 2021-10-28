@@ -1,34 +1,36 @@
 package com.example.pictureconverter.mvp.presenter
 
-import android.graphics.Bitmap
+
 import android.net.Uri
-import android.widget.Toast
 import com.example.pictureconverter.mvp.ImageConverter
+import com.example.pictureconverter.mvp.model.Image
 import com.example.pictureconverter.mvp.scheduler.Schedulers
 import com.example.pictureconverter.mvp.view.IMainView
-import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import moxy.MvpPresenter
+import java.io.File
 
 class ImagePresenter(private val converter: ImageConverter) : MvpPresenter<IMainView>() {
 
     val disposable = CompositeDisposable()
+    private var sImage: Image? = null
 
 
     fun setChoosenImage(choosenFile: Uri) {
         viewState.setConvertedImage(choosenFile)
     }
 
-    fun convertationOfNewImage(image: Bitmap, pathToSaveFile: String) {
+    fun convert(toPath: File) {
+        val image = sImage ?: return
         disposable.addAll(
-            converter.convertBitmapToFile(image, pathToSaveFile)
-                    .subscribeOn(Schedulers.thread())
-                    .observeOn(Schedulers.main())
-                    .subscribe({ convertedImage ->
-                        viewState.setConvertedImage(Uri.parse(convertedImage.absolutePath))
-                    }, {error ->
-                        viewState.showError(error)
-                    })
+                converter.convertBitmapToFile(image, toPath)
+                        .subscribeOn(Schedulers.thread())
+                        .observeOn(Schedulers.main())
+                        .subscribe({ convertedImage ->
+                            viewState.setConvertedImage(Uri.parse(convertedImage.absolutePath))
+                        }, { error ->
+                            viewState.showError(error)
+                        })
         )
     }
 

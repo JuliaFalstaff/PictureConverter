@@ -1,5 +1,6 @@
 package com.example.pictureconverter.mvp.model
 
-//class Image {
-//    val path: String
-//}
+class Image (
+        val path: String,
+        val data: ByteArray
+)

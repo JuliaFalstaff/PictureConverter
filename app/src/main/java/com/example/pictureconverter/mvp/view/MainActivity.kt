@@ -1,22 +1,18 @@
 package com.example.pictureconverter.mvp.view
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.core.app.ActivityCompat
+import com.example.pictureconverter.R
 import com.example.pictureconverter.databinding.ActivityMainBinding
 import com.example.pictureconverter.mvp.ImageConverter
 import com.example.pictureconverter.mvp.presenter.ImagePresenter
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
+import java.io.File
 
-class MainActivity : MvpAppCompatActivity(), IMainView  {
+class MainActivity : MvpAppCompatActivity(), IMainView {
 
     lateinit var binding: ActivityMainBinding
     val presenter by moxyPresenter { ImagePresenter(ImageConverter()) }
@@ -28,15 +24,14 @@ class MainActivity : MvpAppCompatActivity(), IMainView  {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initView()
-
     }
 
     private fun initView() {
         binding.buttonConverterPicture.setOnClickListener {
             try {
-                val bitmap = BitmapFactory.decodeFile(path)
-                path?.let { it1 -> presenter.convertationOfNewImage(bitmap, it1) }
-            } catch (e : NullPointerException) {
+                val storeToPath = File(cacheDir.absolutePath, getString(R.string.new_name))
+                presenter.convert(storeToPath)
+            } catch (e: NullPointerException) {
                 showError(e)
             }
         }
@@ -47,7 +42,6 @@ class MainActivity : MvpAppCompatActivity(), IMainView  {
             startActivityForResult(getIntent, 1)
         }
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -67,5 +61,4 @@ class MainActivity : MvpAppCompatActivity(), IMainView  {
     override fun showError(error: Throwable) {
         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
     }
-
 }

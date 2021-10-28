@@ -6,4 +6,5 @@
     <string name="imageViewConverted">Converted picture</string>
     <string name="converted_picture">Converted picture</string>
     <string name="choosePicture">Choose Picture</string>
+    <string name="new_name">new_name</string>
 </resources>
