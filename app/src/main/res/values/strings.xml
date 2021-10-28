@@ -5,4 +5,5 @@
     <string name="imageViewToConvert">Here is Image to Convert</string>
     <string name="imageViewConverted">Converted picture</string>
     <string name="converted_picture">Converted picture</string>
+    <string name="choosePicture">Choose Picture</string>
 </resources>

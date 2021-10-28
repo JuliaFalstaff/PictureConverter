@@ -6,6 +6,6 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import java.io.File
 
-interface IConvertation {
-    fun bitmapToFile(bitmap: Bitmap?, fileToSave: File): Observable<Uri>
+interface IImageConvertation {
+    fun convertBitmapToFile(image: Bitmap?, pathToSaveFile: String): Single<File>
 }

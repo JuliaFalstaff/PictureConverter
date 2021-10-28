@@ -8,6 +8,7 @@ import java.io.File
 
 @AddToEndSingle
 interface IMainView : MvpView {
-    fun init()
-
+    fun setNonConvertedImage(oldImage: Uri?)
+    fun setConvertedImage(newImage: Uri)
+    fun showError(error: Throwable)
 }
