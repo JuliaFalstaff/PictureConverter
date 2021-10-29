@@ -2,10 +2,8 @@ package com.example.pictureconverter.converter
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.pictureconverter.R
@@ -34,10 +32,8 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     fun initView() {
         binding.buttonConverterPicture.setOnClickListener {
-            presenter.selectImage(view = View(this))
-            binding.imageViewToConvertPicture.setImageDrawable(it as Drawable)
-            presenter.showPicture(it)
-        }
+            presenter.selectImage(it)
+         }
     }
 
     override fun showSuccess(path: String) {
@@ -56,9 +52,5 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun showError(throwable: Throwable) {
         Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
-    }
-
-    override fun showPicture(view: View) {
-        binding.imageViewOfConvertedPicture.setImageDrawable(view as Drawable)
     }
 }

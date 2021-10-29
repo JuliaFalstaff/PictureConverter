@@ -19,9 +19,6 @@ class PictureConverterPresenter(private val converter: Converter, private val re
         viewState.pickImage()
     }
 
-    fun showPicture(view: View) {
-        viewState.showPicture(view)
-    }
 
     fun convertPicture(uri: Uri?) {
         disposable.addAll(
