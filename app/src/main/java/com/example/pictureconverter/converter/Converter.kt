@@ -6,11 +6,11 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Environment
 import io.reactivex.rxjava3.core.Maybe
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.io.*
+import java.io.BufferedInputStream
+import java.io.BufferedOutputStream
+import java.io.File
 
-class Converter(private val context: Context) : IConvert {
+class Converter(private val context: Context) : IConvertRepository {
 
     companion object {
         private const val fileName = "converted_image"
