@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PictureConverter</string>
+    <string name="textViewConverter">Click the button to convert picture from JPG to PNG</string>
+    <string name="buttonConverter">Convert from JPG to PNG</string>
+    <string name="imageViewToConvert">Here is Image to Convert</string>
+    <string name="imageViewConverted">Converted picture</string>
+    <string name="converted_picture">Converted picture</string>
+    <string name="choosePicture">Choose Picture</string>
+    <string name="new_name">new_name</string>
+    <string name="noImage">You should choose a picture</string>
 </resources>

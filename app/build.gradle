@@ -1,11 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
     compileSdkVersion 31
     buildToolsVersion "30.0.3"
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.example.pictureconverter"
@@ -42,4 +47,15 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    
+    //Moxy
+    implementation "com.github.moxy-community:moxy:2.2.0"
+    kapt "com.github.moxy-community:moxy-compiler:2.2.0"
+    implementation "com.github.moxy-community:moxy-androidx:2.2.0"
+    implementation "com.github.moxy-community:moxy-ktx:2.1.2"
+
+    //RX
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
 }
