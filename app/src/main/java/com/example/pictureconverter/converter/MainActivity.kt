@@ -6,7 +6,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.example.pictureconverter.R
 import com.example.pictureconverter.databinding.ActivityMainBinding
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
@@ -27,10 +26,11 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         if (it.resultCode == Activity.RESULT_OK) {
             val data: Uri? = it.data?.data
             presenter.convertPicture(data)
+            presenter.showContent(data)
         }
     }
 
-    fun initView() {
+    override fun initView() {
         binding.buttonConverterPicture.setOnClickListener {
             presenter.selectImage(it)
          }
@@ -40,11 +40,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         Toast.makeText(this, path, Toast.LENGTH_LONG).show()
     }
 
-    override fun showEmpty() {
-        Toast.makeText(this, getString(R.string.noImage), Toast.LENGTH_LONG).show()
-    }
-
-    override fun pickImage() {
+    override fun pickPicture() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         result.launch(intent)
@@ -52,5 +48,9 @@ class MainActivity : MvpAppCompatActivity(), MainView {
 
     override fun showError(throwable: Throwable) {
         Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun showContent(uri: Uri?) {
+        binding.imageViewOfConvertedPicture.setImageURI(uri)
     }
 }

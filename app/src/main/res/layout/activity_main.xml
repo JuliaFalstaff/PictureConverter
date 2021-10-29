@@ -7,16 +7,6 @@
     tools:context=".converter.MainActivity">
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonToChoosePicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom_header"
-        android:text="@string/choosePicture"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonConverterPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,18 +14,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageViewOfConvertedPicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewToConvertPicture" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageViewToConvertPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/imageViewToConvert"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonToChoosePicture" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageViewOfConvertedPicture"
@@ -47,14 +26,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewToConvertPicture" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textViewOfConvertedPicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_converted_picture"
-        android:text="@string/converted_picture"
+        android:text="@string/imageViewConverted"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -13,8 +13,9 @@ import java.io.File
 class Converter(private val context: Context) : IConvertRepository {
 
     companion object {
-        private const val fileName = "converted_image"
+        private const val fileName = "converted"
         private const val fileExt = "png"
+        private const val BITMAP_QUALITY = 100
     }
 
     override fun convert(uri: Uri?): Maybe<String> {
@@ -31,7 +32,7 @@ class Converter(private val context: Context) : IConvertRepository {
                     BufferedOutputStream(file.outputStream()).use { outStream ->
                         BufferedInputStream(context.contentResolver.openInputStream(it)).use { inputStream ->
                             val bitmap = BitmapFactory.decodeStream(inputStream)
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream)
+                            bitmap.compress(Bitmap.CompressFormat.PNG, BITMAP_QUALITY, outStream)
                         }
                     }
                     file.absolutePath
